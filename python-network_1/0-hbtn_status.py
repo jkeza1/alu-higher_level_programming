@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Module 0-hbtn_status.py
-"""
+"""Fetches https://intranet.hbtn.io/status."""
 
 import urllib.request
 
