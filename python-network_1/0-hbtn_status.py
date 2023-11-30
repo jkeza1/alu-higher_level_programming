@@ -1,14 +1,17 @@
 #!/usr/bin/python3
-"""
-Python script that takes your Github credentials (username and password)
-and uses the Github API to display your id
-"""
-import requests
-from requests.auth import HTTPBasicAuth
-from sys import argv
+import urllib.request
 
-if _name_ == '_main_':
-    url = 'https://api.github.com/users/{}'.format(argv[1])
-    r = requests.get(url,
-                     auth=HTTPBasicAuth(argv[1], argv[2]))
-    print(r.json().get('id'))
+url = 'https://intranet.hbtn.io/status'
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+    '\n    AppleWebKit/537.36 (KHTML, like Gecko)'
+    '\n    Chrome/99.0.4844.84 Safari/537.36',
+}
+
+req = urllib.request.Request(url, headers=headers)
+with urllib.request.urlopen(req) as response:
+    content = response.read()
+    print("Body response:")
+    print("\t- type:", type(content))
+    print("\t- content:", content)
+    print("\t- utf8 content:", content.decode("utf-8"))
